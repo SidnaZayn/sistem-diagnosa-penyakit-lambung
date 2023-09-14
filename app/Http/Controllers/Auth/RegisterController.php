@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,7 +24,35 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    public function register(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'alamat' => 'required',
+        ]);
 
+        $blog = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'gender' => $request->gender,
+            'age' => $request->age,
+            'alamat' => $request->alamat,
+            'role_id' => 2,
+        ]);
+
+        if ($blog) {
+            //redirect dengan pesan sukses
+            return redirect()->route('login');
+        } else {
+            //redirect dengan pesan error
+            return redirect()->route('re')->with(['error' => 'Data Gagal Disimpan!']);
+        }
+    }
     /**
      * Where to redirect users after registration.
      *

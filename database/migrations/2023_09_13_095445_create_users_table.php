@@ -19,6 +19,9 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('gender', 20)->nullable();
+            $table->integer('age')->nullable();
+            $table->string('alamat', 100)->nullable();
             $table->foreignId('role_id')->constrained();
             $table->timestamps();
         });
@@ -28,7 +31,7 @@ return new class extends Migration {
             array(
                 'name' => 'admin',
                 'email' =>'admin@mail.com',
-                'password' => '11223344',
+                'password' => Hash::make('11223344'),
                 'role_id' => '1',
             )
         );
