@@ -50,8 +50,12 @@
                             <a class="nav-link page-scroll" href="#contact">Contact</a>
                         </li> -->
                         <li class="nav-item">
+                            <a class="btn btn-singin" href="{{ route('register') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="btn btn-singin" href="{{ route('login') }}">Login</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
