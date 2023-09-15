@@ -21,64 +21,23 @@
     <link rel="stylesheet" href="{{ asset('user/css/nivo-lightbox.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/responsive.css') }}">
-	<link href="{{ asset('user/css/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <main class="d-flex">
-            <div class="w-25">
-                <aside id="sidebar" class="sidebar shadow-lg pt-3 pl-3">
-
-                    <ul class="sidebar-nav" id="sidebar-nav">
+        <main class="d-flex bg-custom">
+            <div class="w-25 p-4">
+                <aside id="sidebar" class="shadow-lg bg-white" style="border-radius: 10px">
+                    <ul class="sidebar-nav pt-3 pl-3" id="sidebar-nav">
+                        <li class="nav-heading">SIPAKLAM</li>
 
                         <li class="nav-item">
                             <a class="nav-link collapsed" href="home.html">
                                 <i class="bi bi-grid"></i>
                                 <span>Dashboard</span>
                             </a>
-                        </li><!-- End Dashboard Nav -->
+                        </li>
 
                         <li class="nav-heading">Pages</li>
 
@@ -116,20 +75,21 @@
                                 <span>About</span>
                             </a>
                         </li><!-- End Login Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="logoutuser.php">
-                                <i class="bi bi-dash-circle"></i>
-                                <span>Logout</span>
-                            </a>
-                        </li><!-- End Error 404 Page Nav -->
-
                     </ul>
-
-                </aside><!-- End Sidebar-->
+                    <div class="bg-sidebar-foot mt-5 d-flex justify-content-center p-5" style="border-radius: 0 0 10px 10px">
+                        <a class="btn btn-light nav-link text-dark collapsed" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();"><i class="bi bi-dash-circle"></i> logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </aside>
             </div>
-            <div class="w-100 bg-warning">
-                @yield('content')
+            <div class="w-100">
+                <div class="p-3">
+                    @yield('content')
+                </div>
             </div>
         </main>
     </div>
