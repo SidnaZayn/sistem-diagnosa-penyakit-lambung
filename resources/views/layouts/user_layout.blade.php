@@ -12,7 +12,7 @@
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('user/img/2.jpeg') }}" type="image/jpeg">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/LineIcons.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.css') }}">
@@ -29,52 +29,56 @@
         <main class="d-flex bg-custom">
             <div class="w-25 p-4">
                 <aside id="sidebar" class="shadow-lg bg-white" style="border-radius: 10px">
-                    <ul class="sidebar-nav pt-3 pl-3" id="sidebar-nav">
-                        <li class="nav-heading">SIPAKLAM</li>
+                    <ul class="sidebar-nav pt-3" id="sidebar-nav">
+                        <div class="ps-3">
+                            <li class="nav-heading text-dark">SIPAKLAM</li>
+    
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="{{ route('home') }}">
+                                    <i class="bi bi-grid"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                        </div>
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="home.html">
-                                <i class="bi bi-grid"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-heading">Pages</li>
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="home.php">
-                                <i class="bi bi-person"></i>
-                                <span>Home</span>
-                            </a>
-                        </li><!-- End Profile Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="pasien_add_fm.php">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Diagnosa</span>
-                            </a>
-                        </li><!-- End F.A.Q Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="info-penyakit.php">
-                                <i class="bi bi-envelope"></i>
-                                <span>Info Penyakit</span>
-                            </a>
-                        </li><!-- End Contact Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="history_hasil_diagnosa.php">
-                                <i class="bi bi-card-list"></i>
-                                <span>History Hasil Diagnosa</span>
-                            </a>
-                        </li><!-- End Register Page Nav -->
-
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" href="about.php">
-                                <i class="bi bi-card-list"></i>
-                                <span>About</span>
-                            </a>
-                        </li><!-- End Login Page Nav -->
+                        <div class="ps-3 mt-2">
+                            <li class="nav-heading text-dark">Pages</li>
+    
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="{{ route('home') }}">
+                                    <i class="bi bi-person"></i>
+                                    <span>Home</span>
+                                </a>
+                            </li><!-- End Profile Page Nav -->
+    
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="{{ route('diagnosa.index') }}">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>Diagnosa</span>
+                                </a>
+                            </li><!-- End F.A.Q Page Nav -->
+    
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="info-penyakit.php">
+                                    <i class="bi bi-envelope"></i>
+                                    <span>Info Penyakit</span>
+                                </a>
+                            </li><!-- End Contact Page Nav -->
+    
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="history_hasil_diagnosa.php">
+                                    <i class="bi bi-card-list"></i>
+                                    <span>History Hasil Diagnosa</span>
+                                </a>
+                            </li><!-- End Register Page Nav -->
+    
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="about.php">
+                                    <i class="bi bi-card-list"></i>
+                                    <span>About</span>
+                                </a>
+                            </li><!-- End Login Page Nav -->
+                        </div>
                     </ul>
                     <div class="bg-sidebar-foot mt-5 d-flex justify-content-center p-5" style="border-radius: 0 0 10px 10px">
                         <a class="btn btn-light nav-link text-dark collapsed" href="{{ route('logout') }}"
@@ -87,7 +91,7 @@
                 </aside>
             </div>
             <div class="w-100">
-                <div class="p-3">
+                <div class="">
                     @yield('content')
                 </div>
             </div>
@@ -102,17 +106,15 @@
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="{{ asset('user/js/jquery-min.js') }}"></script>
-    <script src="{{ asset('user/js/popper.min.js') }}"></script>
-    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="{{ asset('user/js/owl.carousel.js') }}"></script>
     <script src="{{ asset('user/js/jquery.nav.js') }}"></script>
     <script src="{{ asset('user/js/scrolling-nav.js') }}"></script>
     <script src="{{ asset('user/js/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('user/js/nivo-lightbox.js') }}"></script>
     <script src="{{ asset('user/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('user/js/form-validator.min.js') }}"></script>
-    <script src="{{ asset('user/js/contact-form-script.js') }}"></script>
     <script src="{{ asset('user/js/main.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>

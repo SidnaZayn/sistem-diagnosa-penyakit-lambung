@@ -1044,7 +1044,7 @@ button:focus {
     color: #3ecf8e;
     display: inline-block;
     zoom: 1;
-    *display: inline;
+    display: inline;
     margin: 5px;
     font-size: 16px;
     -webkit-border-radius: 30px;
@@ -1065,7 +1065,7 @@ button:focus {
     color: #3ecf8e;
     display: inline-block;
     zoom: 1;
-    *display: inline;
+    display: inline;
     margin: 5px;
     font-size: 16px;
     -webkit-border-radius: 30px;
@@ -1777,4 +1777,8 @@ button:focus {
             var(--c2) 0
         );
     background-size: calc(1.732 * var(--s)) var(--s);
+}
+.chat-bubble{
+    width: fit-content;
+    background-color: #d5f5dd;
 }

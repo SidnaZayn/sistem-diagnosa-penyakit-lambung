@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('alamat', 100);
             $table->foreignId('user_id')->constrained();
             $table->dateTime('tanggal');
-            $table->string('email', 20);
+            $table->string('email');
             $table->timestamps();
         });
     }

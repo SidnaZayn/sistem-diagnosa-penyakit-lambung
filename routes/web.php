@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\GejalaController;
+use App\Http\Controllers\PasienController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +33,7 @@ Route::resource('admin', AdminController::class, [
 ]);
 
 Route::prefix('diagnosa')->group(function () {
-    Route::get('/', [DiagnosaController::class, 'index'])->name('index');
+    Route::get('/', [DiagnosaController::class, 'index'])->name('diagnosa.index');
+    Route::post('/createpasien', [PasienController::class, 'createPasien'])->name('diagnosa.createPasien');
+    Route::get('/keluhan',[GejalaController::class, 'index'])->name('diagnosa.keluhan');
 });
