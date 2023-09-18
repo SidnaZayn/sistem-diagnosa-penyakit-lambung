@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\GejalaController;
+use App\Http\Controllers\HasilAnalisaController;
 use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,7 @@ Route::prefix('diagnosa')->group(function () {
     Route::get('/', [DiagnosaController::class, 'index'])->name('diagnosa.index');
     Route::post('/createpasien', [PasienController::class, 'createPasien'])->name('diagnosa.createPasien');
     Route::get('/keluhan',[GejalaController::class, 'index'])->name('diagnosa.keluhan');
+    Route::post('/keluhan',[GejalaController::class, 'createGejala'])->middleware('auth:sanctum')->name('diagnosa.keluhan.create');
+    Route::get('/analisa',[HasilAnalisaController::class, 'analisa'])->name('diagnosa.analisa');
+    
 });

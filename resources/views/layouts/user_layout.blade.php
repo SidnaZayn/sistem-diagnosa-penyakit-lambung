@@ -8,6 +8,8 @@
     <meta name="keywords" content="Bootstrap, Landing page, Template, Business, Service">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Grayrids">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>Sipaklam - Sistem Pakar Lambung</title>
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('user/img/2.jpeg') }}" type="image/jpeg">

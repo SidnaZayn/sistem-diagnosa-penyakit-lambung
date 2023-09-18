@@ -1,0 +1,2 @@
+ini loading
+{{ $gejala }}

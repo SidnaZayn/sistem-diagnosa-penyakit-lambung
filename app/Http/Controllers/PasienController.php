@@ -36,7 +36,7 @@ class PasienController extends Controller
         ]);
 
         if ($pasien) {
-            return redirect()->route('diagnosa.keluhan');
+                return redirect()->route('diagnosa.keluhan', ['pasienid'=>$pasien->id]);
         } else {
             return redirect()->route('re')->with(['error' => 'Data Gagal Disimpan!']);
         }
