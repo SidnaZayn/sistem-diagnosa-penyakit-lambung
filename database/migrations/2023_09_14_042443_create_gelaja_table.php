@@ -14,26 +14,16 @@ return new class extends Migration {
     {
         Schema::create('gejala', function (Blueprint $table) {
             $table->id();
+            $table->string('heart_burn')->default('0')->comment("(dada terasa panas)");
+            $table->string('regurgitasi')->default('0')->comment("naiknya isi lambung ke arah tenggorok");
             $table->string('mual')->default('0');
             $table->string('muntah')->default('0');
-            $table->string('muntah_asam')->default('0');
+            $table->string('sendawa')->default('0')->comment("seberapa sering ?");
+            $table->string('perut_kembung')->default('0')->comment("terasa penuh");
+            $table->string('nyeri_ulu_hati')->default('0');
+            $table->string('nyeri_ulu_hati_bila_makan')->default('0');
             $table->string('muntah_darah')->default('0');
-            $table->string('panas')->default('0');
-            $table->string('sakit_perut')->default('0');
-            $table->string('buang_air_besar')->default('0');
-            $table->string('mulut_luka')->default('0');
-            $table->string('bibir_pecah')->default('0');
-            $table->string('badan_lesu')->default('0');
-            $table->string('pusing')->default('0');
-            $table->string('kehilangan_nafsu')->default('0'); //Perut terasa nyeri, pedih, kembung, dan sesak (sebak) pada bagian atas perut
-            $table->string('perut_nyeri')->default('0');
-            $table->string('mulut_kering')->default('0');
-            $table->string('sering_sendawa')->default('0'); //Sering sendawa terutama bila dalam keadaan lapar
-            $table->string('sulit_tidur')->default('0'); //Sulit tidur karena gangguan rasa sakit pada daerah perut sebelah atas (ulu hati)
-            $table->string('bengkak_rahang')->default('0');
-            $table->string('bau_nafas')->default('0');
             $table->string('feses_berdarah_berlendir')->default('0');
-            $table->string('tidak_buang_besar')->default('0'); //Tidak buang air besar lebih dari 3 hari
             $table->foreignId('pasien_id')->constrained();
             $table->timestamps();
         });

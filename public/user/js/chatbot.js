@@ -26,340 +26,231 @@ function getInputValue(gejalaColName, inputId) {
 }
 
 function botChat1() {
-    let bubbleBot = defaultChat("apakah anda merasa mual? (ya/tidak)");
+    let bubbleBot = defaultChat(
+        "apakah anda merasa dada terasa panas terbakar?"
+    );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('mual','1','ya')">ya</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('mual','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('heart_burn','5','ya, sangat sakit')">ya, sangat sakit</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('heart_burn','4','ya, dan saya masih bisa tahan')">ya, dan saya masih bisa tahan</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('heart_burn','3','ya, lumayan sakit')">ya, lumayan sakit</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('heart_burn','2','tidak terlalu')">tidak terlalu</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('heart_burn','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2;
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
+
     QuestionNumber++;
 }
 
 function botChat2() {
     let bubbleBot = defaultChat(
-        "apakah anda muntah ? jika 'ya', berapakali dalam satu hari?"
+        "apakah anda merasa naik isi lambung sampai ke tenggorokan ?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah','5','lebih dari 5 kali')">lebih dari 5 kali</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah','4','4 kali')">4 kali</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah','3','3 kali')">3 kali</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah','2','2 kali')">2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah','1','1 kali')">1 kali</button>`;
-    let ansButton6 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans6" onclick="getInnerTextAnswer('muntah','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('regurgitasi','5','ya, sampai muntah')">ya, sampai muntah</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('regurgitasi','4','ya, tapi tidak sampai muntah')">ya, tapi tidak sampai muntah</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('regurgitasi','3','ya, lumayan')">ya, lumayan</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('regurgitasi','2','tidak terlalu')">tidak terlalu</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('regurgitasi','1','tidak')">tidak</button>`;
 
     fastRes.innerHTML =
         ansButton1 +
         ansButton2 +
         ansButton3 +
         ansButton4 +
-        ansButton5 +
-        ansButton6;
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat3() {
-    let bubbleBot = defaultChat(
-        "apakah anda muntah dan terasa asam ? jika 'ya', berapakali dalam satu hari?"
+    const bubbleBot = defaultChat(
+        "apakah anda merasa mual ? (tapi tidak terasa asam dimulut/tenggorokan)"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah_asam','5','lebih dari 5 kali')">lebih dari 5 kali</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah_asam','4','4 kali')">4 kali</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah_asam','3','3 kali')">3 kali</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah_asam','2','2 kali')">2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah_asam','1','1 kali')">1 kali</button>`;
-    let ansButton6 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans6" onclick="getInnerTextAnswer('muntah_asam','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('mual','5','ya, sampai muntah')">ya, sampai muntah</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('mual','4','ya, tapi tidak sampai muntah')">ya, tapi tidak sampai muntah</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('mual','3','ya, lumayan')">ya, lumayan</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('mual','2','tidak terlalu')">tidak terlalu</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('mual','1','tidak')">tidak</button>`;
 
     fastRes.innerHTML =
         ansButton1 +
         ansButton2 +
         ansButton3 +
         ansButton4 +
-        ansButton5 +
-        ansButton6;
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat4() {
-    let bubbleBot = defaultChat(
-        "apakah anda muntah dan mengeluarkan darah ? jika 'ya', berapakali dalam satu hari?"
+    const bubbleBot = defaultChat(
+        "apakah anda muntah-muntah ?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah_darah','5','lebih dari 5 kali')">lebih dari 5 kali</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah_darah','4','4 kali')">4 kali</button>`;
-    const ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah_darah','3','3 kali')">3 kali</button>`;
-    const ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah_darah','2','2 kali')">2 kali</button>`;
-    const ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah_darah','1','1 kali')">1 kali</button>`;
-    const ansButton6 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans6" onclick="getInnerTextAnswer('muntah_darah','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah','5','ya, sangat sering')">ya, sangat sering</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah','4','ya, lumayan sering')">ya, lumayan sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah','2','1-2 kali')">1-2 kali</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah','1','tidak')">tidak</button>`;
 
     fastRes.innerHTML =
         ansButton1 +
         ansButton2 +
         ansButton3 +
         ansButton4 +
-        ansButton5 +
-        ansButton6;
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat5() {
     const bubbleBot = defaultChat(
-        "apakah anda panas ? jika 'ya', berapa derajat celcius? atau seberapa panas?"
+        "apakah anda sering sekali sendawa?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('panas','1','sangat panas')">sangat panas</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('panas','0.5','panas sedang')">panas sedang</button>`;
-    const ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('panas','0','tidak panas')">tidak panas</button>`;
-    const ansInput = `
-    <div class="d-flex">
-        <input type="text" class="form-control me-2" id="ans4" placeholder="brp celcius?">
-        <button id="btn-chat" class="btn btn-outline-secondary text-dark shadow" onclick="getInputValue('panas','ans4')"><i class="bi bi-send"></i></button>
-    </div>
-    `;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('sendawa','5','ya, sangat sering')">ya, sangat sering</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('sendawa','4','ya, lumayan sering')">ya, lumayan sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('sendawa','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('sendawa','2','1-2 kali')">1-2 kali</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('sendawa','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2 + ansButton3 + ansInput;
-
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
+        
     QuestionNumber++;
 }
 
 function botChat6() {
     const bubbleBot = defaultChat(
-        "apakah anda merasakan sakit perut seperti menahan buang air?"
+        "apakah anda merasakan perut kembung?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('sakit_perut','1','ya, sangat sakit')">ya, sangat sakit</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('sakit_perut','0.5','tidak terlalu sakit')">tidak terlalu sakit</button>`;
-    const ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('sakit_perut','0','tidak sakit')">tidak sakit</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('perut_kembung','5','ya, sangat kembung sekali')">ya, sangat kembung sekali</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('perut_kembung','4','ya, sering')">ya, sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('perut_kembung','3','sesekali muncul rasa kembung')">sesekali muncul rasa kembung</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('perut_kembung','2','jarang kembung')">jarang kembung</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('perut_kembung','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2 + ansButton3;
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat7() {
     const bubbleBot = defaultChat(
-        "apakah anda sering buang air besar ? jika 'ya', seberapa sering dalam satu hari?"
+        "apakah anda merasa neri ulu hati?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('buang_air_besar','5','lebih dari 5 kali')">lebih dari 5 kali</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('buang_air_besar','4','4 kali')">4 kali</button>`;
-    const ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('buang_air_besar','3','3 kali')">3 kali</button>`;
-    const ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('buang_air_besar','2','2 kali')">2 kali</button>`;
-    const ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('buang_air_besar','1','1 kali')">1 kali</button>`;
-    const ansButton6 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans6" onclick="getInnerTextAnswer('buang_air_besar','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('nyeri_ulu_hati','5','ya, sangat sering')">ya, sangat sering</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('nyeri_ulu_hati','4','ya, lumayan sering')">ya, lumayan sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('nyeri_ulu_hati','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('nyeri_ulu_hati','2','1-2 kali')">1-2 kali</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('nyeri_ulu_hati','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2 + ansButton3 + ansButton4 + ansButton5 + ansButton6;
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat8() {
     const bubbleBot = defaultChat(
-        "apakah anda luka/sariawan ?"
+        "apakah anda merasa nyeri ulu hati saat makan ?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('mulut_luka','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('mulut_luka','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','5','ya, sangat sering')">ya, sangat sering</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','4','ya, lumayan sering')">ya, lumayan sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','2','1-2 kali')">1-2 kali</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2;
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat9() {
     const bubbleBot = defaultChat(
-        "apakah anda merasakan bibir pecah-pecah dan kering ?"
+        "apakah anda muntah darah?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('bibir_pecah','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('bibir_pecah','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah_darah','5','ya, sangat sering')">ya, sangat sering</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah_darah','4','ya, lumayan sering')">ya, lumayan sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah_darah','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah_darah','2','1-2 kali')">1-2 kali</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah_darah','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2;
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
 
     QuestionNumber++;
 }
 
 function botChat10() {
     const bubbleBot = defaultChat(
-        "apakah anda merasa lemas / lesu ?"
+        "apakah buang air besar, feses anda berdarah/menghitam dan berlendir?"
     );
     chatSection.innerHTML += bubbleBot;
     chatSection.scrollTop = chatSection.scrollHeight;
 
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('badan_lesu','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('badan_lesu','0','tidak')">tidak</button>`;
+    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('feses_berdarah_berlendir','5','ya, sangat sering')">ya, sangat sering</button>`;
+    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('feses_berdarah_berlendir','4','ya, lumayan sering')">ya, lumayan sering</button>`;
+    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('feses_berdarah_berlendir','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
+    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('feses_berdarah_berlendir','2','1-2 kali')">1-2 kali</button>`;
+    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('feses_berdarah_berlendir','1','tidak')">tidak</button>`;
 
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat11() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa pusing / kunang-kunang ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('pusing','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('pusing','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat12() {
-    const bubbleBot = defaultChat(
-        "apakah anda kehilangan nafsu makan ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('kehilangan_nafsu','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('kehilangan_nafsu','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat13() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasakan perut nyeri/perih ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('perut_nyeri','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('perut_nyeri','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat14() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa mulut dan tenggorokan kering ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('mulut_kering','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('mulut_kering','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat15() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa sering bersendawa ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('sering_sendawa','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('sering_sendawa','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat16() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa sulit tidur ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('sulit_tidur','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('sulit_tidur','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat17() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa bengkak di area rahang ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('bengkak_rahang','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('bengkak_rahang','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat18() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa nafas anda bau dan bau tersebut berasal dari tenggorokan ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('bau_nafas','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('bau_nafas','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat19() {
-    const bubbleBot = defaultChat(
-        "apakah Buang Air Besar anda berdarah dan berlendir ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('feses_berdarah_berlendir','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('feses_berdarah_berlendir','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
-
-    QuestionNumber++;
-}
-
-function botChat20() {
-    const bubbleBot = defaultChat(
-        "apakah anda tidak buang air besar dalam waktu yang lama (lebih dari 5 hari)?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
-
-    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('tidak_buang_besar','1','ya')">ya</button>`;
-    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('tidak_buang_besar','0','tidak')">tidak</button>`;
-
-    fastRes.innerHTML = ansButton1 + ansButton2;
+    fastRes.innerHTML =
+        ansButton1 +
+        ansButton2 +
+        ansButton3 +
+        ansButton4 +
+        ansButton5
 
     QuestionNumber++;
 }
@@ -394,10 +285,10 @@ function postAnswer() {
     fetch('/diagnosa/keluhan', options)
         .then((response) => {
             response.json().then(e => {
+                console.log(e)
                 window.location.href = `/diagnosa/analisa?gejala=${e.id}`
-            })
-        })
-
+            }).catch(err => console.log(err))
+        }).catch(err => console.log(err))
 }
 
 function sendChat(user) {
@@ -428,31 +319,10 @@ function sendChat(user) {
         botChat9();
     } else if (QuestionNumber === 10) {
         botChat10();
-    } else if (QuestionNumber === 11) {
-        botChat11();
-    } else if (QuestionNumber === 12) {
-        botChat12();
-    } else if (QuestionNumber === 13) {
-        botChat13();
-    } else if (QuestionNumber === 14) {
-        botChat14();
-    } else if (QuestionNumber === 15) {
-        botChat15();
-    } else if (QuestionNumber === 16) {
-        botChat16();
-    } else if (QuestionNumber === 17) {
-        botChat17();
-    } else if (QuestionNumber === 18) {
-        botChat18();
-    } else if (QuestionNumber === 19) {
-        botChat19();
-    } else if (QuestionNumber === 20) {
-        botChat20();
-    } else if (QuestionNumber > 20) {
+    } else if (QuestionNumber > 10) {
         botChatLast()
     }
 
-    // console.log(UserAnswers);
 }
 
 sendChat();

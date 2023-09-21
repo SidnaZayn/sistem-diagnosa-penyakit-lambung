@@ -12,28 +12,17 @@ class Gejala extends Model
     protected $table = 'gejala';
 
     protected $fillable = [
+        'heart_burn',
+        'regurgitasi',
         'mual',
         'muntah',
-        'muntah_asam',
+        'sendawa',
+        'perut_kembung',
+        'nyeri_ulu_hati',
+        'nyeri_ulu_hati_bila_makan',
         'muntah_darah',
-        'panas',
-        'sakit_perut',
-        'buang_air_besar',
-        'mulut_luka',
-        'demam',
-        'bibir_pecah',
-        'badan_lesu',
-        'pusing,',
-        'kehilangan_nafsu',
-        'perut_nyeri',
-        'mulut_kering',
-        'sering_sendawa',
-        'sulit_tidur',
-        'bengkak_rahang',
-        'bau_nafas,',
         'feses_berdarah_berlendir',
-        'tidak_buang_besar',
-        'pasien_id',
+        'pasien_id'
     ];
     public function pasien()
     {

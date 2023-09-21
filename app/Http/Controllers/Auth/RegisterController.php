@@ -28,10 +28,10 @@ class RegisterController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required',
             'gender' => 'required',
-            'age' => 'required',
+            'age' => 'required|integer',
             'alamat' => 'required',
         ]);
 
@@ -50,7 +50,7 @@ class RegisterController extends Controller
             return redirect()->route('login');
         } else {
             //redirect dengan pesan error
-            return redirect()->route('re')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
     /**

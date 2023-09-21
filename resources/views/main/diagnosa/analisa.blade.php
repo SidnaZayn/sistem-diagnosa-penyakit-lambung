@@ -1,2 +1,5 @@
 ini loading
-{{ $gejala }}
+{{ $hasil }}
+@foreach ($gejala as $gejala)
+    {{ $gejala }}
+@endforeach

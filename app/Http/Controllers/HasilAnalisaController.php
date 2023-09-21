@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gejala;
+use App\Http\Controllers\FuzzyMembershipFunctions;
 use Illuminate\Http\Request;
 
 class HasilAnalisaController extends Controller
@@ -22,6 +23,23 @@ class HasilAnalisaController extends Controller
 
         $gejala = Gejala::where('id', $gejala_id)->first();
 
-        return view('main.diagnosa.analisa', ['gejala' => $gejala]);
+        $fuzzyClass = new FuzzyMembershipFunctions($gejala->pasien_id, $gejala);
+
+        $gejala = [
+            'heart_burn' => $fuzzyClass->fuzzification($gejala->heart_burn),
+            'regurgitasi' => $fuzzyClass->fuzzification($gejala->regurgitasi),
+            'mual' => $fuzzyClass->fuzzification($gejala->mual),
+            'muntah' => $fuzzyClass->fuzzification($gejala->muntah),
+            'sendawa' => $fuzzyClass->fuzzification($gejala->sendawa),
+            'perut_kembung' => $fuzzyClass->fuzzification($gejala->perut_kembung),
+            'nyeri_ulu_hati' => $fuzzyClass->fuzzification($gejala->nyeri_ulu_hati),
+            'nyeri_ulu_hati_bila_makan' => $fuzzyClass->fuzzification($gejala->nyeri_ulu_hati_bila_makan),
+            'muntah_darah' => $fuzzyClass->fuzzification($gejala->muntah_darah),
+            'feses_berdarah_berlendir' => $fuzzyClass->fuzzification($gejala->feses_berdarah_berlendir),
+        ];
+
+        $allHasil = $fuzzyClass->mamdaniInference();
+
+        return view('main.diagnosa.analisa', ['hasil' => $allHasil,'gejala' => $gejala]);
     }
 }

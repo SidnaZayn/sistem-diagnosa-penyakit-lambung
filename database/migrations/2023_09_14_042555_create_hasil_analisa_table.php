@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('pasien_id')->constrained('pasiens');
             $table->foreignId('penyakit_solusi_id')->constrained('penyakit_solusi');
             $table->foreignId('gejala_id')->constrained('gejala');
+            $table->string('diagnosa_value')->comment('nilai kemungkinan/kedekatan dengan penyakit');
             $table->timestamps();
         });
     }
