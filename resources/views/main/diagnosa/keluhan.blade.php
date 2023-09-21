@@ -2,9 +2,7 @@
 
 @section('content')
     <section class="py-4 pe-4" style="height: 100vh">
-        {{-- {{ $req }} --}}
-
-        <div class="card w-100 h-100  shadow">
+        <div class="card w-100 h-100 shadow">
             <div class="card-body d-flex flex-column justify-content-end">
                 <div id="chat-start" class="p-3" style="max-height: 70vh; overflow-y: auto;">
                 </div>

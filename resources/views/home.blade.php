@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-center mt-2">
+        <div class="p-3">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header d-flex justify-content-center">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                <div class="card-body d-flex justify-content-center align-content-center">
+                    <div class="text-center">
+                        <h1>Selamat Datang di SIPAKLAM</h1>
+                        <h3>(Sistem Penyakit Lambung)</h3>
+                        <hr>
+                        <p>Silahkan Gunakan Aplikasi Dengan Bijak</p>
+                        <a href="{{ route('diagnosa.index') }}">mulai disini</a>
+                    </div>
                 </div>
             </div>
         </div>

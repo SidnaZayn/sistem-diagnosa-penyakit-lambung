@@ -136,7 +136,7 @@ function botChat5() {
         ansButton3 +
         ansButton4 +
         ansButton5
-        
+
     QuestionNumber++;
 }
 

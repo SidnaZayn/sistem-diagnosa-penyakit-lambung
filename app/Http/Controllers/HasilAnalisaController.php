@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Gejala;
 use App\Http\Controllers\FuzzyMembershipFunctions;
+use App\Models\HasilAnalisa;
+use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HasilAnalisaController extends Controller
 {
@@ -40,6 +43,22 @@ class HasilAnalisaController extends Controller
 
         $allHasil = $fuzzyClass->mamdaniInference();
 
-        return view('main.diagnosa.analisa', ['hasil' => $allHasil,'gejala' => $gejala]);
+        return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
+    }
+
+    function getHistoryByPasienId()
+    {
+
+        $allPasiens = Pasien::all()->where('user_id', Auth::user()->id);
+        $history = [];
+
+        foreach ($allPasiens as $pasien) {
+            $hasilAnalisa = HasilAnalisa::where('pasien_id', $pasien->id)->with('penyakit_solusi')->with('pasien')->get();
+            foreach ($hasilAnalisa as $hasil) {
+                array_push($history, $hasil);
+            }
+        }
+
+        return view('main.history.index', ['histories' => $history]);
     }
 }

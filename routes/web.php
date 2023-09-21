@@ -5,6 +5,7 @@ use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\HasilAnalisaController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\PenyakitSolusiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +37,15 @@ Route::resource('admin', AdminController::class, [
 Route::prefix('diagnosa')->group(function () {
     Route::get('/', [DiagnosaController::class, 'index'])->name('diagnosa.index');
     Route::post('/createpasien', [PasienController::class, 'createPasien'])->name('diagnosa.createPasien');
-    Route::get('/keluhan',[GejalaController::class, 'index'])->name('diagnosa.keluhan');
-    Route::post('/keluhan',[GejalaController::class, 'createGejala'])->middleware('auth:sanctum')->name('diagnosa.keluhan.create');
-    Route::get('/analisa',[HasilAnalisaController::class, 'analisa'])->name('diagnosa.analisa');
-    
+    Route::get('/keluhan', [GejalaController::class, 'index'])->name('diagnosa.keluhan');
+    Route::post('/keluhan', [GejalaController::class, 'createGejala'])->middleware('auth:sanctum')->name('diagnosa.keluhan.create');
+    Route::get('/analisa', [HasilAnalisaController::class, 'analisa'])->name('diagnosa.analisa');
+});
+
+Route::prefix('penyakit_solusi')->group(function () {
+    Route::get('/',[PenyakitSolusiController::class, 'index'])->name('penyakit_solusi.index');
+});
+
+Route::prefix('history')->group(function () {
+    Route::get('/',[HasilAnalisaController::class, 'getHistoryByPasienId'])->name('history.index');
 });
