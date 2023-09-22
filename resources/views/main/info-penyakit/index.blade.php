@@ -2,8 +2,9 @@
 
 @section('content')
     <section class="pt-4 pe-3">
-        <div class="card w-100 h-100 shadow">
-            <div class="card-body ">
+        <div class="card w-100 h-100 shadow p-4">
+            <div class="card-body" style="max-height: 90vh; overflow-y: auto;">
+                <p class="fs-1 text-center"><strong> Daftar Penyakit Lambung</strong></p>
                 @foreach ($penyakit_solusi as $penyakit_solusi)
                     <div id="{{ $penyakit_solusi->nama_penyakit }}" class="my-4">
                         <p class="fs-3 mb-2"><strong>{{ $penyakit_solusi->nama_penyakit }}</strong></p>

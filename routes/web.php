@@ -40,12 +40,17 @@ Route::prefix('diagnosa')->group(function () {
     Route::get('/keluhan', [GejalaController::class, 'index'])->name('diagnosa.keluhan');
     Route::post('/keluhan', [GejalaController::class, 'createGejala'])->middleware('auth:sanctum')->name('diagnosa.keluhan.create');
     Route::get('/analisa', [HasilAnalisaController::class, 'analisa'])->name('diagnosa.analisa');
+    Route::get('/view-hasil-analisa', [HasilAnalisaController::class, 'viewHasilAnalisa'])->name('diagnosa.viewHasilAnalisa');
 });
 
 Route::prefix('penyakit_solusi')->group(function () {
-    Route::get('/',[PenyakitSolusiController::class, 'index'])->name('penyakit_solusi.index');
+    Route::get('/', [PenyakitSolusiController::class, 'index'])->name('penyakit_solusi.index');
 });
 
 Route::prefix('history')->group(function () {
-    Route::get('/',[HasilAnalisaController::class, 'getHistoryByPasienId'])->name('history.index');
+    Route::get('/', [HasilAnalisaController::class, 'getHistoryByPasienId'])->name('history.index');
 });
+
+Route::get('/about', function () {
+    return view('main.about.index');
+})->name('about.index');

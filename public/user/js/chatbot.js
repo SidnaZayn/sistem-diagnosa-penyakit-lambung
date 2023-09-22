@@ -10,7 +10,7 @@ let QuestionNumber = 1;
 let UserAnswers = {};
 
 function defaultChat(params) {
-    return `<div class="row"><div class="py-2 px-3 shadow chat-bubble my-2 rounded "><small>Bot</small><p>${params}</p></div></div>`;
+    return `<div class="row"><div class="py-2 px-3 shadow chat-bubble my-2 rounded animate__animated animate__bounce"><small>Bot</small><p>${params}</p></div></div>`;
 }
 
 function getInnerTextAnswer(gejalaColName, val, $evt) {
@@ -284,11 +284,21 @@ function postAnswer() {
 
     fetch('/diagnosa/keluhan', options)
         .then((response) => {
-            response.json().then(e => {
-                console.log(e)
-                window.location.href = `/diagnosa/analisa?gejala=${e.id}`
-            }).catch(err => console.log(err))
-        }).catch(err => console.log(err))
+            response.json()
+                .then(e => {
+                    fetch(`/diagnosa/analisa?gejala=${e.id}`).then(r => {
+                        r.json()
+                            .then(res => {
+                                window.location.href = `/diagnosa/view-hasil-analisa?gejala=${res.id}`
+                                // console.log(res.id)
+                            })
+                            .catch(err => console.log(err))
+                    })
+                        .catch(err => console.log(err))
+                })
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
 }
 
 function sendChat(user) {

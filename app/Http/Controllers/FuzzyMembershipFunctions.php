@@ -122,9 +122,7 @@ class FuzzyMembershipFunctions
             $this->createHasilAnalisa('kanker lambung', $diagnosaValue);
         }
 
-        $allHasil = HasilAnalisa::where('gejala_id',$this->gejala->id)->with('penyakit_solusi')->get();
-
-        return $allHasil;
+        return true;
     }
     
 }

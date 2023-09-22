@@ -1,19 +1,22 @@
-<section class="section">
-    <div class="row">
+@extends('layouts.user_layout')
+
+@section('content')
+    <section id="about" class="mt-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"></h5>
-
                 <div class="art-post-body">
                     <div class="art-post-inner art-article">
-                        <h2 class="art-postheader">Aplikasi</h2>
-                        <div class="art-postcontent">
-                            <p>Sistem Pakar Diagnosa Penyakit Lambung Dengan Menggunaka Metode Fuzzy Mamdani dibuat
-                                untuk membantu orang mengetahui jenis penyakit lambung berdasarkan gejala yang dialami
-                                serta memberikan informasi mengenai penyakit lambung hingga obat dari penyakit lambung.
-                            </p>
-
-                            <h2 class="art-postheader">Tata Cara Melakukan Konsultasi</h2>
+                        <div class="mb-3">
+                            <h2 class="art-postheader text-center">Aplikasi</h2>
+                            <div class="art-postcontent">
+                                <p>Sistem Pakar Diagnosa Penyakit Lambung Dengan Menggunaka Metode Fuzzy Mamdani dibuat
+                                    untuk membantu orang mengetahui jenis penyakit lambung berdasarkan gejala yang dialami
+                                    serta memberikan informasi mengenai penyakit lambung hingga obat dari penyakit lambung.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h2 class="art-postheader text-center">Tata Cara Melakukan Konsultasi</h2>
                             <div class="art-postcontent">
                                 <p>Pilih menu <strong>Diagnosa</strong> untuk melakukan konsultasi dengan sistem. Jika
                                     sebelumnya sudah registrasi, maka akan muncul data diri anda, tambahkan
@@ -22,19 +25,15 @@
                                     </strong>Kemudian tekan button <strong>Proses Diagnosa</strong> untuk mendiagnosa
                                     penyakit anda berdasarkan gejala yang anda input. Kemudian sistem akan menampilkan
                                     hasil diagnosa </p>
-
-                                <center>
-                                    <strong>Terima kasih</strong>
-                                </center>
                             </div>
-
                         </div>
-                        <div class="cleared"></div>
+                        <div class="text-center">
+                            <strong>Terima kasih</strong>
+                        </div>
                     </div>
-                    <div class="cleared"></div>
                 </div>
 
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endsection
