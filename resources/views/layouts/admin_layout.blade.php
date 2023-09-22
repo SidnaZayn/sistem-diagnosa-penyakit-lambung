@@ -15,6 +15,7 @@
     <link rel="shortcut icon" href="{{ asset('user/img/2.jpeg') }}" type="image/jpeg">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('user/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/LineIcons.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/owl.theme.css') }}">
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="{{ asset('user/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/bootstrap-icons/bootstrap-icons.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 </head>
 
@@ -48,39 +48,11 @@
                             <li class="nav-heading text-dark">Pages</li>
 
                             <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('home') }}">
+                                <a class="nav-link collapsed" href="{{ route('admin') }}">
                                     <i class="bi bi-person"></i>
-                                    <span>Home</span>
-                                </a>
-                            </li><!-- End Profile Page Nav -->
-
-                            <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('diagnosa.index') }}">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>Diagnosa</span>
+                                    <span>Users</span>
                                 </a>
                             </li><!-- End F.A.Q Page Nav -->
-
-                            <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('penyakit_solusi.index') }}">
-                                    <i class="bi bi-envelope"></i>
-                                    <span>Info Penyakit</span>
-                                </a>
-                            </li><!-- End Contact Page Nav -->
-
-                            <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('history.index') }}">
-                                    <i class="bi bi-card-list"></i>
-                                    <span>History Hasil Diagnosa</span>
-                                </a>
-                            </li><!-- End Register Page Nav -->
-
-                            <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('about.index') }}">
-                                    <i class="bi bi-card-list"></i>
-                                    <span>About</span>
-                                </a>
-                            </li><!-- End Login Page Nav -->
                         </div>
                     </ul>
                     <div class="bg-sidebar-foot mt-5 d-flex justify-content-center p-5"

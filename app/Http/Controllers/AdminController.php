@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->view('admin.dashboard', ['users']);
+        return response()->view('admin.users', ['users'=>$users]);
     }
 
     /**

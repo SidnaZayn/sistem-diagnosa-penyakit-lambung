@@ -9,9 +9,6 @@ let lastUserAnswer;
 let QuestionNumber = 1;
 let UserAnswers = {};
 
-function defaultChat(params) {
-    return `<div class="row"><div class="py-2 px-3 shadow chat-bubble my-2 rounded animate__animated animate__bounce"><small>Bot</small><p>${params}</p></div></div>`;
-}
 
 function getInnerTextAnswer(gejalaColName, val, $evt) {
     UserAnswers[gejalaColName] = val;
@@ -24,13 +21,31 @@ function getInputValue(gejalaColName, inputId) {
     lastUserAnswer, UserAnswers[gejalaColName] = input.value
     sendChat(username);
 }
+function appendBotChat(text) {
+    const newDiv = document.createElement('div');
+    newDiv.className = "row";
+
+    const newText = document.createElement('div');
+    newText.className = "py-3 px-3 shadow chat-bubble my-2 rounded animate__animated animate__fadeInUp";
+
+    const botName = document.createElement('small');
+    botName.innerText += 'Bot';
+
+    const p = document.createElement('p');
+    p.innerText += text;
+
+    newText.appendChild(botName);
+    newText.appendChild(p);
+
+    newDiv.appendChild(newText);
+
+    // const bubbleBot = `<div class="row"><div class="py-2 px-3 shadow chat-bubble my-2 rounded animate__animated animate__fadeInUp"><small>Bot</small><p>${text}</p></div></div>`;
+    chatSection.appendChild(newDiv);
+    chatSection.scrollTop = chatSection.scrollHeight;
+}
 
 function botChat1() {
-    let bubbleBot = defaultChat(
-        "apakah anda merasa dada terasa panas terbakar?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda merasa dada terasa panas terbakar?");
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('heart_burn','5','ya, sangat sakit')">ya, sangat sakit</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('heart_burn','4','ya, dan saya masih bisa tahan')">ya, dan saya masih bisa tahan</button>`;
@@ -49,11 +64,7 @@ function botChat1() {
 }
 
 function botChat2() {
-    let bubbleBot = defaultChat(
-        "apakah anda merasa naik isi lambung sampai ke tenggorokan ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda merasa naik isi lambung sampai ke tenggorokan ?");
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('regurgitasi','5','ya, sampai muntah')">ya, sampai muntah</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('regurgitasi','4','ya, tapi tidak sampai muntah')">ya, tapi tidak sampai muntah</button>`;
@@ -72,11 +83,7 @@ function botChat2() {
 }
 
 function botChat3() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa mual ? (tapi tidak terasa asam dimulut/tenggorokan)"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda merasa mual ? (tapi tidak terasa asam dimulut/tenggorokan)")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('mual','5','ya, sampai muntah')">ya, sampai muntah</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('mual','4','ya, tapi tidak sampai muntah')">ya, tapi tidak sampai muntah</button>`;
@@ -95,11 +102,7 @@ function botChat3() {
 }
 
 function botChat4() {
-    const bubbleBot = defaultChat(
-        "apakah anda muntah-muntah ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda muntah-muntah ?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah','5','ya, sangat sering')">ya, sangat sering</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah','4','ya, lumayan sering')">ya, lumayan sering</button>`;
@@ -118,11 +121,7 @@ function botChat4() {
 }
 
 function botChat5() {
-    const bubbleBot = defaultChat(
-        "apakah anda sering sekali sendawa?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda sering sekali sendawa?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('sendawa','5','ya, sangat sering')">ya, sangat sering</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('sendawa','4','ya, lumayan sering')">ya, lumayan sering</button>`;
@@ -141,11 +140,7 @@ function botChat5() {
 }
 
 function botChat6() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasakan perut kembung?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda merasakan perut kembung?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('perut_kembung','5','ya, sangat kembung sekali')">ya, sangat kembung sekali</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('perut_kembung','4','ya, sering')">ya, sering</button>`;
@@ -164,11 +159,7 @@ function botChat6() {
 }
 
 function botChat7() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa neri ulu hati?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda merasa neri ulu hati?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('nyeri_ulu_hati','5','ya, sangat sering')">ya, sangat sering</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('nyeri_ulu_hati','4','ya, lumayan sering')">ya, lumayan sering</button>`;
@@ -187,11 +178,7 @@ function botChat7() {
 }
 
 function botChat8() {
-    const bubbleBot = defaultChat(
-        "apakah anda merasa nyeri ulu hati saat makan ?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda merasa nyeri ulu hati saat makan ?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','5','ya, sangat sering')">ya, sangat sering</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','4','ya, lumayan sering')">ya, lumayan sering</button>`;
@@ -210,11 +197,7 @@ function botChat8() {
 }
 
 function botChat9() {
-    const bubbleBot = defaultChat(
-        "apakah anda muntah darah?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah anda muntah darah?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah_darah','5','ya, sangat sering')">ya, sangat sering</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah_darah','4','ya, lumayan sering')">ya, lumayan sering</button>`;
@@ -233,11 +216,7 @@ function botChat9() {
 }
 
 function botChat10() {
-    const bubbleBot = defaultChat(
-        "apakah buang air besar, feses anda berdarah/menghitam dan berlendir?"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("apakah buang air besar, feses anda berdarah/menghitam dan berlendir?")
 
     let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('feses_berdarah_berlendir','5','ya, sangat sering')">ya, sangat sering</button>`;
     let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('feses_berdarah_berlendir','4','ya, lumayan sering')">ya, lumayan sering</button>`;
@@ -256,11 +235,7 @@ function botChat10() {
 }
 
 function botChatLast() {
-    const bubbleBot = defaultChat(
-        "baiklah, jawaban anda akan kami proses... tunggu sebentar ya"
-    );
-    chatSection.innerHTML += bubbleBot;
-    chatSection.scrollTop = chatSection.scrollHeight;
+    appendBotChat("baiklah, jawaban anda akan kami proses... tunggu sebentar ya");
 
     const ansButton1 = `<button onclick="postAnswer()" class="btn btn-outline-secondary shadow fs-6 text-dark w-100">baiklah</button>`;
 
@@ -290,7 +265,6 @@ function postAnswer() {
                         r.json()
                             .then(res => {
                                 window.location.href = `/diagnosa/view-hasil-analisa?gejala=${res.id}`
-                                // console.log(res.id)
                             })
                             .catch(err => console.log(err))
                     })
@@ -304,7 +278,7 @@ function postAnswer() {
 function sendChat(user) {
     if (QuestionNumber !== 1) {
         const user_ = user ? user : username;
-        let bubbleUser = `<div class="row justify-content-end"><div class="py-2 px-3 shadow chat-bubble my-2 rounded "><small>${user_}</small><p>${lastUserAnswer}</p></div></div>`;
+        let bubbleUser = `<div class="row justify-content-end"><div class="py-2 px-3 shadow chat-bubble my-2 rounded animate__animated animate__fadeInUp"><small>${user_}</small><p>${lastUserAnswer}</p></div></div>`;
 
         chatSection.innerHTML += bubbleUser;
     }
