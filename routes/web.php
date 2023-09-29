@@ -34,6 +34,8 @@ Route::resource('admin', AdminController::class, [
     ]
 ]);
 
+Route::get('/test', [HasilAnalisaController::class, 'test']);
+
 Route::prefix('diagnosa')->group(function () {
     Route::get('/', [DiagnosaController::class, 'index'])->name('diagnosa.index');
     Route::post('/createpasien', [PasienController::class, 'createPasien'])->name('diagnosa.createPasien');

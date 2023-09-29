@@ -9,7 +9,6 @@ let lastUserAnswer;
 let QuestionNumber = 1;
 let UserAnswers = {};
 
-
 function getInnerTextAnswer(gejalaColName, val, $evt) {
     UserAnswers[gejalaColName] = val;
     lastUserAnswer = $evt;
@@ -18,20 +17,21 @@ function getInnerTextAnswer(gejalaColName, val, $evt) {
 
 function getInputValue(gejalaColName, inputId) {
     const input = document.getElementById(inputId);
-    lastUserAnswer, UserAnswers[gejalaColName] = input.value
+    lastUserAnswer, (UserAnswers[gejalaColName] = input.value);
     sendChat(username);
 }
 function appendBotChat(text) {
-    const newDiv = document.createElement('div');
+    const newDiv = document.createElement("div");
     newDiv.className = "row";
 
-    const newText = document.createElement('div');
-    newText.className = "py-3 px-3 shadow chat-bubble my-2 rounded animate__animated animate__fadeInUp";
+    const newText = document.createElement("div");
+    newText.className =
+        "py-3 px-3 shadow chat-bubble my-2 rounded animate__animated animate__fadeInUp";
 
-    const botName = document.createElement('small');
-    botName.innerText += 'Bot';
+    const botName = document.createElement("small");
+    botName.innerText += "Bot";
 
-    const p = document.createElement('p');
+    const p = document.createElement("p");
     p.innerText += text;
 
     newText.appendChild(botName);
@@ -39,203 +39,139 @@ function appendBotChat(text) {
 
     newDiv.appendChild(newText);
 
-    // const bubbleBot = `<div class="row"><div class="py-2 px-3 shadow chat-bubble my-2 rounded animate__animated animate__fadeInUp"><small>Bot</small><p>${text}</p></div></div>`;
     chatSection.appendChild(newDiv);
     chatSection.scrollTop = chatSection.scrollHeight;
 }
 
-function botChat1() {
-    appendBotChat("apakah anda merasa dada terasa panas terbakar?");
-
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('heart_burn','5','ya, sangat sakit')">ya, sangat sakit</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('heart_burn','4','ya, dan saya masih bisa tahan')">ya, dan saya masih bisa tahan</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('heart_burn','3','ya, lumayan sakit')">ya, lumayan sakit</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('heart_burn','2','tidak terlalu')">tidak terlalu</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('heart_burn','1','tidak')">tidak</button>`;
-
-    fastRes.innerHTML =
+function answers(penyakit) {
+    const ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('${penyakit}','0','tidak merasakan')">tidak merasakan</button>`;
+    const ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('${penyakit}','1','ya, sudah satu hari')">ya, sudah satu hari</button>`;
+    const ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('${penyakit}','2','ya, sudah dua hari')">ya, sudah dua hari</button>`;
+    const ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('${penyakit}','3','ya, sudah tiga hari')">ya, sudah tiga hari</button>`;
+    const ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('${penyakit}','4','ya, sudah empat hari')">ya, sudah empat hari</button>`;
+    const ansButton6 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans6" onclick="getInnerTextAnswer('${penyakit}','5','ya, sudah lebih dari empat hari')">ya, sudah lebih dari empat hari</button>`;
+    const ans =
         ansButton1 +
         ansButton2 +
         ansButton3 +
         ansButton4 +
-        ansButton5
+        ansButton5 +
+        ansButton6;
+
+    return ans;
+}
+
+function botChat1() {
+    appendBotChat("apakah anda merasa dada terasa panas terbakar?");
+    
+    const ans = answers("heart_burn");
+
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat2() {
-    appendBotChat("apakah anda merasa naik isi lambung sampai ke tenggorokan ?");
+    appendBotChat(
+        "apakah anda merasa naik isi lambung sampai ke tenggorokan ?"
+    );
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('regurgitasi','5','ya, sampai muntah')">ya, sampai muntah</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('regurgitasi','4','ya, tapi tidak sampai muntah')">ya, tapi tidak sampai muntah</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('regurgitasi','3','ya, lumayan')">ya, lumayan</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('regurgitasi','2','tidak terlalu')">tidak terlalu</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('regurgitasi','1','tidak')">tidak</button>`;
+    const ans = answers("regurgitasi");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat3() {
-    appendBotChat("apakah anda merasa mual ? (tapi tidak terasa asam dimulut/tenggorokan)")
+    appendBotChat(
+        "apakah anda merasa mual ? (tapi tidak terasa asam dimulut/tenggorokan)"
+    );
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('mual','5','ya, sampai muntah')">ya, sampai muntah</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('mual','4','ya, tapi tidak sampai muntah')">ya, tapi tidak sampai muntah</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('mual','3','ya, lumayan')">ya, lumayan</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('mual','2','tidak terlalu')">tidak terlalu</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('mual','1','tidak')">tidak</button>`;
+    const ans = answers("mual");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat4() {
-    appendBotChat("apakah anda muntah-muntah ?")
+    appendBotChat("apakah anda muntah-muntah ?");
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah','5','ya, sangat sering')">ya, sangat sering</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah','4','ya, lumayan sering')">ya, lumayan sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah','2','1-2 kali')">1-2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah','1','tidak')">tidak</button>`;
+    const ans = answers("muntah");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat5() {
-    appendBotChat("apakah anda sering sekali sendawa?")
+    appendBotChat("apakah anda sering sekali sendawa?");
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('sendawa','5','ya, sangat sering')">ya, sangat sering</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('sendawa','4','ya, lumayan sering')">ya, lumayan sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('sendawa','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('sendawa','2','1-2 kali')">1-2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('sendawa','1','tidak')">tidak</button>`;
+    const ans = answers("sendawa");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
-
+    fastRes.innerHTML = ans;
+    
     QuestionNumber++;
 }
 
 function botChat6() {
-    appendBotChat("apakah anda merasakan perut kembung?")
+    appendBotChat("apakah anda merasakan perut kembung?");
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('perut_kembung','5','ya, sangat kembung sekali')">ya, sangat kembung sekali</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('perut_kembung','4','ya, sering')">ya, sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('perut_kembung','3','sesekali muncul rasa kembung')">sesekali muncul rasa kembung</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('perut_kembung','2','jarang kembung')">jarang kembung</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('perut_kembung','1','tidak')">tidak</button>`;
+    const ans = answers("perut_kembung");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat7() {
-    appendBotChat("apakah anda merasa neri ulu hati?")
+    appendBotChat("apakah anda merasa neri ulu hati?");
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('nyeri_ulu_hati','5','ya, sangat sering')">ya, sangat sering</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('nyeri_ulu_hati','4','ya, lumayan sering')">ya, lumayan sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('nyeri_ulu_hati','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('nyeri_ulu_hati','2','1-2 kali')">1-2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('nyeri_ulu_hati','1','tidak')">tidak</button>`;
+    const ans = answers("nyeri_ulu_hati");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
-
+    fastRes.innerHTML = ans;
+    
     QuestionNumber++;
 }
 
 function botChat8() {
-    appendBotChat("apakah anda merasa nyeri ulu hati saat makan ?")
+    appendBotChat("apakah anda merasa nyeri ulu hati saat makan ?");
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','5','ya, sangat sering')">ya, sangat sering</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','4','ya, lumayan sering')">ya, lumayan sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','2','1-2 kali')">1-2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('nyeri_ulu_hati_bila_makan','1','tidak')">tidak</button>`;
+    
+    const ans = answers("nyeri_ulu_hati_bila_makan");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat9() {
-    appendBotChat("apakah anda muntah darah?")
+    appendBotChat("apakah anda muntah darah?");
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('muntah_darah','5','ya, sangat sering')">ya, sangat sering</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('muntah_darah','4','ya, lumayan sering')">ya, lumayan sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('muntah_darah','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('muntah_darah','2','1-2 kali')">1-2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('muntah_darah','1','tidak')">tidak</button>`;
+    const ans = answers("muntah_darah");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChat10() {
-    appendBotChat("apakah buang air besar, feses anda berdarah/menghitam dan berlendir?")
+    appendBotChat(
+        "apakah buang air besar, feses anda berdarah/menghitam dan berlendir?"
+    );
 
-    let ansButton1 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans1" onclick="getInnerTextAnswer('feses_berdarah_berlendir','5','ya, sangat sering')">ya, sangat sering</button>`;
-    let ansButton2 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans2" onclick="getInnerTextAnswer('feses_berdarah_berlendir','4','ya, lumayan sering')">ya, lumayan sering</button>`;
-    let ansButton3 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans3" onclick="getInnerTextAnswer('feses_berdarah_berlendir','3','sesekali (3-4 kali)')">sesekali (3-4 kali)</button>`;
-    let ansButton4 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans4" onclick="getInnerTextAnswer('feses_berdarah_berlendir','2','1-2 kali')">1-2 kali</button>`;
-    let ansButton5 = `<button class="btn btn-outline-secondary shadow fs-6 text-dark" id="ans5" onclick="getInnerTextAnswer('feses_berdarah_berlendir','1','tidak')">tidak</button>`;
+    const ans = answers("feses_berdarah_berlendir");
 
-    fastRes.innerHTML =
-        ansButton1 +
-        ansButton2 +
-        ansButton3 +
-        ansButton4 +
-        ansButton5
+    fastRes.innerHTML = ans;
 
     QuestionNumber++;
 }
 
 function botChatLast() {
-    appendBotChat("baiklah, jawaban anda akan kami proses... tunggu sebentar ya");
+    appendBotChat(
+        "baiklah, jawaban anda akan kami proses... tunggu sebentar ya"
+    );
 
     const ansButton1 = `<button onclick="postAnswer()" class="btn btn-outline-secondary shadow fs-6 text-dark w-100">baiklah</button>`;
 
@@ -243,36 +179,40 @@ function botChatLast() {
 }
 
 function postAnswer() {
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    UserAnswers['pasien_id'] = id;
+    const token = document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content");
+    UserAnswers["pasien_id"] = id;
     const options = {
         method: "POST",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json;charset=UTF-8",
-            'X-CSRF-TOKEN': token,
+            "X-CSRF-TOKEN": token,
         },
-        body: JSON.stringify(UserAnswers)
-    }
+        body: JSON.stringify(UserAnswers),
+    };
 
-    console.log(UserAnswers)
+    console.log(UserAnswers);
 
-    fetch('/diagnosa/keluhan', options)
+    fetch("/diagnosa/keluhan", options)
         .then((response) => {
-            response.json()
-                .then(e => {
-                    fetch(`/diagnosa/analisa?gejala=${e.id}`).then(r => {
-                        r.json()
-                            .then(res => {
-                                window.location.href = `/diagnosa/view-hasil-analisa?gejala=${res.id}`
-                            })
-                            .catch(err => console.log(err))
-                    })
-                        .catch(err => console.log(err))
+            response
+                .json()
+                .then((e) => {
+                    fetch(`/diagnosa/analisa?gejala=${e.id}`)
+                        .then((r) => {
+                            r.json()
+                                .then((res) => {
+                                    window.location.href = `/diagnosa/view-hasil-analisa?gejala=${res.id}`;
+                                })
+                                .catch((err) => console.log(err));
+                        })
+                        .catch((err) => console.log(err));
                 })
-                .catch(err => console.log(err))
+                .catch((err) => console.log(err));
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
 }
 
 function sendChat(user) {
@@ -304,10 +244,8 @@ function sendChat(user) {
     } else if (QuestionNumber === 10) {
         botChat10();
     } else if (QuestionNumber > 10) {
-        botChatLast()
+        botChatLast();
     }
-
 }
 
 sendChat();
-

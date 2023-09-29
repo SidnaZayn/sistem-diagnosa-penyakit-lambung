@@ -24,6 +24,8 @@ class GejalaController extends Controller
 
     public function createGejala(Request $request)
     {
+        $fuzzyClass = new FuzzyMembershipFunctions($request->pasien_id, 0);
+
         $request->validate([
             'heart_burn' => 'required',
             'regurgitasi' => 'required',
@@ -38,19 +40,20 @@ class GejalaController extends Controller
             'pasien_id' => 'required'
         ]);
 
-        $gejala = Gejala::create([
-            'heart_burn' => $request->heart_burn,
-            'regurgitasi' => $request->regurgitasi,
-            'mual' => $request->mual,
-            'muntah' => $request->muntah,
-            'sendawa' => $request->sendawa,
-            'perut_kembung' => $request->perut_kembung,
-            'nyeri_ulu_hati' => $request->nyeri_ulu_hati,
-            'nyeri_ulu_hati_bila_makan' => $request->nyeri_ulu_hati_bila_makan,
-            'c' => $request->muntah_darah,
-            'feses_berdarah_berlendir' => $request->feses_berdarah_berlendir,
-            'pasien_id' => $request->pasien_id,
-        ]);
+        $req = [
+            $request->heart_burn,
+            $request->regurgitasi,
+            $request->mual,
+            $request->muntah,
+            $request->sendawa,
+            $request->perut_kembung,
+            $request->nyeri_ulu_hati,
+            $request->nyeri_ulu_hati_bila_makan,
+            $request->muntah_darah,
+            $request->feses_berdarah_berlendir
+        ];
+        
+        $gejala = $fuzzyClass->fuzzification($req);
 
         if ($gejala) {
             return response()->json($gejala);

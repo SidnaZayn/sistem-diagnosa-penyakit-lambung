@@ -6,6 +6,7 @@ use App\Models\Gejala;
 use App\Http\Controllers\FuzzyMembershipFunctions;
 use App\Models\HasilAnalisa;
 use App\Models\Pasien;
+use App\Models\PenyakitSolusi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,14 @@ class HasilAnalisaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function test()
+    {
+        $fuzzyClass = new FuzzyMembershipFunctions(0, 0);
+
+        $test = $fuzzyClass->fuzzification(0);
+        return response($test);
     }
 
     public function analisa(Request $request)
@@ -28,7 +37,7 @@ class HasilAnalisaController extends Controller
 
         $fuzzyClass = new FuzzyMembershipFunctions($gejala->pasien_id, $gejala);
 
-        $fuzzyClass->mamdaniInference();
+        $fuzzyClass->rules();
 
         return response()->json($gejala);
     }
@@ -40,9 +49,13 @@ class HasilAnalisaController extends Controller
         if (!$gejala_id) {
             return redirect()->back()->with('error', 'id gejala tidak ditemukan');
         }
-
-        $allHasil = HasilAnalisa::where('gejala_id', $gejala_id)->with('penyakit_solusi')->get();
-
+        // $allPenyakit = PenyakitSolusi::all();
+        $allHasil = HasilAnalisa::where('gejala_id', $gejala_id)
+            ->with('penyakit_solusi')
+            ->join('penyakit_solusi', 'hasil_analisa.penyakit_solusi_id', '=', 'penyakit_solusi.id')
+            ->orderBy('penyakit_solusi.priority', 'desc')
+            ->first();
+        // dd($allHasil);
         $gejala = Gejala::where('id', $gejala_id)->first();
 
         return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
