@@ -124,27 +124,6 @@ class FuzzyMembershipFunctions
         ]);
     }
 
-    // function rules($value) {
-    //     if ($value <=2) {
-    //         $this->createHasilAnalisa('gastritis', 0);
-    //     }
-    //     if ($value >=3 && $value <=6) {
-    //         $this->createHasilAnalisa('gerd', 0);
-    //     }
-    //     if ($value >=7 && $value <=9) {
-    //         $this->createHasilAnalisa('dispepsia', 0);
-    //     }
-    //     if ($value >=10 && $value <=12) {
-    //         $this->createHasilAnalisa('gastroparesis', 0);
-    //     }
-    //     if ($value >=13 && $value <=15) {
-    //         $this->createHasilAnalisa('tukak lambung', 0);
-    //     }
-    //     if ($value >=16 && $value <=18) {
-    //         $this->createHasilAnalisa('kanker lambung', 0);
-    //     }
-    // }
-
     public function rules()
     {
         //GERD

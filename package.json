@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
+        "dev": "php artisan route:cache && php artisan config:cache && vite",
         "build": "vite build"
     },
     "devDependencies": {

@@ -29,8 +29,51 @@
 
 <body>
     <div id="app">
+
+        <nav class="navbar navbar-expand-md bg-white sticky-top scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('user/img/logo1.png') }}" alt="logo"
+                        style="margin: 0; padding:0; height: 60px;">
+                    <span class="text-dark">SIPAKLAM</span>
+                </a>
+                <div class="navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark page-scroll" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('diagnosa.index') }}">Diagnosa</a></li>
+                                <li><a class="dropdown-item" href="{{ route('history.index') }}">History Diagnosa</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('penyakit_solusi.index') }}">Info
+                                        Penyakit</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark page-scroll" href="{{ route('about.index') }}">About</a>
+                        <li class="nav-item">
+                            <button class="btn btn-singin" onclick="document.getElementById('logout-form').submit();">
+                                <i class="bi bi-dash-circle"></i> logout</button>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <main class="d-flex bg-custom">
-            <div class="w-25 p-4">
+            {{-- <div class="w-25 p-4">
                 <aside id="sidebar" class="shadow-lg bg-white" style="border-radius: 10px">
                     <ul class="sidebar-nav pt-3" id="sidebar-nav">
                         <div class="ps-3">
@@ -55,21 +98,21 @@
                             </li><!-- End Profile Page Nav -->
 
                             <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('diagnosa.index') }}">
+                                <a class="nav-link collapsed" href="">
                                     <i class="bi bi-question-circle"></i>
                                     <span>Diagnosa</span>
                                 </a>
                             </li><!-- End F.A.Q Page Nav -->
 
                             <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('penyakit_solusi.index') }}">
+                                <a class="nav-link collapsed" href="">
                                     <i class="bi bi-envelope"></i>
                                     <span>Info Penyakit</span>
                                 </a>
                             </li><!-- End Contact Page Nav -->
 
                             <li class="nav-item mt-2 ps-3">
-                                <a class="nav-link collapsed" href="{{ route('history.index') }}">
+                                <a class="nav-link collapsed" href="">
                                     <i class="bi bi-card-list"></i>
                                     <span>History Hasil Diagnosa</span>
                                 </a>
@@ -94,8 +137,8 @@
                         </form>
                     </div>
                 </aside>
-            </div>
-            <div class="w-100">
+            </div> --}}
+            <div class="container">
                 <div class="">
                     @yield('content')
                 </div>
@@ -111,9 +154,7 @@
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="{{ asset('user/js/jquery-min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('user/js/owl.carousel.js') }}"></script>
     <script src="{{ asset('user/js/jquery.nav.js') }}"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
