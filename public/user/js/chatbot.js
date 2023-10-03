@@ -62,21 +62,18 @@ function answers(penyakit) {
 }
 
 function botChat1() {
-    appendBotChat("apakah anda merasa dada terasa panas terbakar?");
-    
-    const ans = answers("heart_burn");
+    appendBotChat("apakah anda merasakan perut kembung?");
+
+    const ans = answers("perut_kembung");
 
     fastRes.innerHTML = ans;
-
-    QuestionNumber++;
+ 
 }
 
 function botChat2() {
-    appendBotChat(
-        "apakah anda merasa naik isi lambung sampai ke tenggorokan ?"
-    );
+    appendBotChat("apakah anda sering sekali sendawa?");
 
-    const ans = answers("regurgitasi");
+    const ans = answers("sendawa");
 
     fastRes.innerHTML = ans;
 
@@ -89,7 +86,6 @@ function botChat3() {
     );
 
     const ans = answers("mual");
-
     fastRes.innerHTML = ans;
 
     QuestionNumber++;
@@ -106,9 +102,11 @@ function botChat4() {
 }
 
 function botChat5() {
-    appendBotChat("apakah anda sering sekali sendawa?");
+    appendBotChat(
+        "apakah anda merasa naik isi lambung sampai ke tenggorokan ?"
+    );
 
-    const ans = answers("sendawa");
+    const ans = answers("regurgitasi");
 
     fastRes.innerHTML = ans;
     
@@ -116,9 +114,9 @@ function botChat5() {
 }
 
 function botChat6() {
-    appendBotChat("apakah anda merasakan perut kembung?");
-
-    const ans = answers("perut_kembung");
+    appendBotChat("apakah anda merasa dada terasa panas terbakar?");
+    
+    const ans = answers("heart_burn");
 
     fastRes.innerHTML = ans;
 
