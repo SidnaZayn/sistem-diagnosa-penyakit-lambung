@@ -21,7 +21,7 @@ class HasilAnalisaController extends Controller
     {
         $fuzzyClass = new FuzzyMembershipFunctions(0, 0);
 
-        $test = $fuzzyClass->fuzzification(0);
+        $test = $fuzzyClass->fuzzification([2, 1, 1, 1, 1, 3]);
         return response($test);
     }
 

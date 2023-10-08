@@ -38,38 +38,35 @@ class FuzzyMembershipFunctions
         $date_now = Carbon::now()->format('H');
         $date =  Carbon::now()->format('i');
 
-        $date_now = ($date > 30) ? $date_now + 1 : $date_now;
-
+        // $date_now = ($date > 30) ? $date_now + 1 : $date_now;
+        $a = array();
         for ($i = 0; $i < count($value); $i++) {
-            $value[$i] = $value[$i] * 24;
+            $value[$i] = $value[$i] * 24 + $date_now;
+            array_push($a, $value[$i]);
 
-            //Fuzzification
-            if ($value < 18) {
+            // Fuzzification
+            if ($value[$i] < 18) {
                 $value[$i] = 0;
-            }
-            if ($value > $batasBawahSedang && $value < $batasAtasBaru) {
-                $baru = ($batasAtasBaru - $value) / ($batasAtasBaru - $batasBawahSedang);
-                $sedang = ($value - $batasBawahSedang) / ($batasAtasBaru - $batasBawahSedang);
+            } elseif ($value[$i] > $batasBawahSedang && $value[$i] < $batasAtasBaru) {
+                $baru = ($batasAtasBaru - $value[$i]) / ($batasAtasBaru - $batasBawahSedang);
+                $sedang = ($value[$i] - $batasBawahSedang) / ($batasAtasBaru - $batasBawahSedang);
                 $value[$i] = $baru > $sedang ? 0 : 1;
-            }
-            if ($value > $batasAtasBaru && $value < $batasBawahLama) {
+            } elseif ($value[$i] > $batasAtasBaru && $value[$i] < $batasBawahLama) {
                 $value[$i] = 1;
-            }
-            if ($value > $batasBawahLama && $value < $batasAtasSedang) {
-                $sedang = ($batasAtasSedang - $value) / ($batasAtasSedang - $batasBawahLama);
-                $lama = ($value - $batasBawahLama) / ($batasAtasSedang - $batasBawahLama);
+            } elseif ($value[$i] > $batasBawahLama && $value[$i] < $batasAtasSedang) {
+                $sedang = ($batasAtasSedang - $value[$i]) / ($batasAtasSedang - $batasBawahLama);
+                $lama = ($value[$i] - $batasBawahLama) / ($batasAtasSedang - $batasBawahLama);
                 $value[$i] = $sedang > $lama ? 1 : 2;
-            }
-            if ($value > $batasAtasSedang && $value < $batasBawahSangatLama) {
+            } elseif ($value[$i] > $batasAtasSedang && $value[$i] < $batasBawahSangatLama) {
                 $value[$i] = 2;
-            }
-            if ($value > $batasBawahSangatLama && $value < $batasAtasLama) {
-                $lama = ($batasAtasLama - $value) / ($batasAtasLama - $batasBawahSangatLama);
-                $sangatLama = ($value - $batasBawahSangatLama) / ($batasAtasLama - $batasBawahSangatLama);
+            } elseif ($value[$i] > $batasBawahSangatLama && $value[$i] < $batasAtasLama) {
+                $lama = ($batasAtasLama - $value[$i]) / ($batasAtasLama - $batasBawahSangatLama);
+                $sangatLama = ($value[$i] - $batasBawahSangatLama) / ($batasAtasLama - $batasBawahSangatLama);
                 $value[$i] = $lama > $sangatLama ? 2 : 3;
-            }
-            if ($value > $batasBawahSangatLama) {
+            } elseif ($value[$i] > $batasBawahSangatLama) {
                 $value[$i] = 3;
+            } else {
+                $value[$i] = "undefined";
             }
         }
 
@@ -167,7 +164,7 @@ class FuzzyMembershipFunctions
         }
 
         //kanker lambung
-        if ($this->gejala->perut_kembung >= 2 && $this->gejala->nyeri_ulu_hati >= 2 || $this->gejala->muntah_darah >= 1 || $this->gejala->feses_berdarah_berlendir >= 1) {
+        if ($this->gejala->perut_kembung >= 2 && $this->gejala->nyeri_ulu_hati >= 2 || $this->gejala->muntah_darah >= 2 || $this->gejala->feses_berdarah_berlendir >= 2) {
 
             $diagnosaValue = ($this->gejala->perut_kembung + $this->gejala->nyeri_ulu_hati + $this->gejala->muntah_darah + $this->gejala->feses_berdarah_berlendir) / 8 * 100;
 
