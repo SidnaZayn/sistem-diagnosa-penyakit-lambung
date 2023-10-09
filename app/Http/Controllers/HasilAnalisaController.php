@@ -58,7 +58,18 @@ class HasilAnalisaController extends Controller
         // dd($allHasil);
         $gejala = Gejala::where('id', $gejala_id)->first();
 
-        return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
+        if ($allHasil) {
+            return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
+        } else {
+            $allHasil = [
+                'nama_penyakit' => 'tidak ditemukan',
+                'definisi' => 'tidak ditemukan',
+                'solusi' => 'tidak ditemukan',
+                'tindak_lanjut' => 'tidak ditemukan',
+                'obat' => 'tidak ditemukan',
+            ];
+            return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
+        }
     }
 
     function getHistoryByPasienId()
