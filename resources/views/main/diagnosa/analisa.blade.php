@@ -12,7 +12,7 @@
                         {{ $hasil->nama_penyakit }}</a>
                 </p>
                 <p class="fs-4">Definisi</p>
-                <p>{{($hasil->definisi)}}</p>
+                <p>{{$hasil->definisi}}</p>
                 <p class="fs-4 mt-2">Solusi</p>
                 <p>{{$hasil->solusi}}</p>
                 <p class="fs-4 mt-2">Tindak Lanjut</p>

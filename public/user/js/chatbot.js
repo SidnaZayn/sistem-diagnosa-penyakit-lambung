@@ -67,7 +67,7 @@ function botChat1() {
     const ans = answers("perut_kembung");
 
     fastRes.innerHTML = ans;
- 
+    QuestionNumber++;
 }
 
 function botChat2() {
