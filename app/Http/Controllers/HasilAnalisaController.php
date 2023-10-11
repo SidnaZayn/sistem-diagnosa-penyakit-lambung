@@ -55,20 +55,11 @@ class HasilAnalisaController extends Controller
             ->join('penyakit_solusi', 'hasil_analisa.penyakit_solusi_id', '=', 'penyakit_solusi.id')
             ->orderBy('penyakit_solusi.priority', 'desc')
             ->first();
-        // dd($allHasil);
         $gejala = Gejala::where('id', $gejala_id)->first();
-
-        if ($allHasil) {
+        if ($allHasil !== null) {
             return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
         } else {
-            $allHasil = [
-                'nama_penyakit' => 'tidak ditemukan',
-                'definisi' => 'tidak ditemukan',
-                'solusi' => 'tidak ditemukan',
-                'tindak_lanjut' => 'tidak ditemukan',
-                'obat' => 'tidak ditemukan',
-            ];
-            return view('main.diagnosa.analisa', ['hasil' => $allHasil, 'gejala' => $gejala]);
+            return view('main.diagnosa.noHasil');
         }
     }
 

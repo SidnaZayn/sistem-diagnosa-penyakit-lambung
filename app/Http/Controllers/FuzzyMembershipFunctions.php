@@ -36,9 +36,7 @@ class FuzzyMembershipFunctions
         $batasBawahSangatLama = 88;
 
         $date_now = Carbon::now()->format('H');
-        $date =  Carbon::now()->format('i');
 
-        // $date_now = ($date > 30) ? $date_now + 1 : $date_now;
         $a = array();
         for ($i = 0; $i < count($value); $i++) {
             $value[$i] = $value[$i] * 24 + $date_now;
@@ -164,7 +162,7 @@ class FuzzyMembershipFunctions
         }
 
         //kanker lambung
-        if ($this->gejala->perut_kembung >= 2 && $this->gejala->nyeri_ulu_hati >= 2 || $this->gejala->muntah_darah >= 2 || $this->gejala->feses_berdarah_berlendir >= 2) {
+        if ($this->gejala->perut_kembung >= 2 && $this->gejala->nyeri_ulu_hati >= 2 && $this->gejala->muntah_darah >= 2 || $this->gejala->feses_berdarah_berlendir >= 2) {
 
             $diagnosaValue = ($this->gejala->perut_kembung + $this->gejala->nyeri_ulu_hati + $this->gejala->muntah_darah + $this->gejala->feses_berdarah_berlendir) / 8 * 100;
 
