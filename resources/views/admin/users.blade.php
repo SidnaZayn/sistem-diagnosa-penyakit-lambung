@@ -21,13 +21,13 @@
                                     {{ $user->name }}
                                 </td>
                                 <td>
-                                    {{ $user->umur }}
+                                    {{ $user->age }}
                                 </td>
                                 <td>
                                     {{ $user->email }}
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary"><i class="bi bi-pen"></i></button>
+                                    <a href="{{ route('admin.edit', $user->id) }}" class="btn btn-primary"><i class="bi bi-pen"></i></a>
                                 </td>
                             </tr>
                         @endforeach

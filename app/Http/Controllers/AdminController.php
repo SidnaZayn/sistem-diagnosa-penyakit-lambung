@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->view('admin.users', ['users'=>$users]);
+        return response()->view('admin.users', ['users' => $users]);
     }
 
     /**
@@ -53,7 +53,6 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -64,7 +63,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.edit-user', ['user' => $user]);
     }
 
     /**
@@ -76,7 +76,27 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama'=>'required',
+            'email'=>'required|email',
+            'gender'=>'required',
+            'usia'=>'required',
+            'alamat'=>'required',
+        ]);
+
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->nama,
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'age' => $request->usia,
+            'alamat' => $request->alamat
+        ]);
+        if ($user) {
+            return redirect()->route('admin');
+        }else{
+            return redirect()->back()->with('error', 'Data Gagal Disimpan!');
+        }
     }
 
     /**

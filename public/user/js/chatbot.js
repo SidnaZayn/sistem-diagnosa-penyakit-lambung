@@ -109,13 +109,13 @@ function botChat5() {
     const ans = answers("regurgitasi");
 
     fastRes.innerHTML = ans;
-    
+
     QuestionNumber++;
 }
 
 function botChat6() {
     appendBotChat("apakah anda merasa dada terasa panas terbakar?");
-    
+
     const ans = answers("heart_burn");
 
     fastRes.innerHTML = ans;
@@ -129,14 +129,13 @@ function botChat7() {
     const ans = answers("nyeri_ulu_hati");
 
     fastRes.innerHTML = ans;
-    
+
     QuestionNumber++;
 }
 
 function botChat8() {
     appendBotChat("apakah anda merasa nyeri ulu hati saat makan ?");
 
-    
     const ans = answers("nyeri_ulu_hati_bila_makan");
 
     fastRes.innerHTML = ans;
@@ -177,40 +176,44 @@ function botChatLast() {
 }
 
 function postAnswer() {
-    const token = document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content");
-    UserAnswers["pasien_id"] = id;
-    const options = {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-            "X-CSRF-TOKEN": token,
-        },
-        body: JSON.stringify(UserAnswers),
-    };
+    try {
+        const token = document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
+        UserAnswers["pasien_id"] = id;
+        const options = {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json;charset=UTF-8",
+                "X-CSRF-TOKEN": token,
+            },
+            body: JSON.stringify(UserAnswers),
+        };
 
-    console.log(UserAnswers);
+        console.log(UserAnswers);
 
-    fetch("/diagnosa/keluhan", options)
-        .then((response) => {
-            response
-                .json()
-                .then((e) => {
-                    fetch(`/diagnosa/analisa?gejala=${e.id}`)
-                        .then((r) => {
-                            r.json()
-                                .then((res) => {
-                                    window.location.href = `/diagnosa/view-hasil-analisa?gejala=${res.id}`;
-                                })
-                                .catch((err) => console.log(err));
-                        })
-                        .catch((err) => console.log(err));
-                })
-                .catch((err) => console.log(err));
-        })
-        .catch((err) => console.log(err));
+        fetch("/diagnosa/keluhan", options)
+            .then((response) => {
+                response
+                    .json()
+                    .then((e) => {
+                        fetch(`/diagnosa/analisa?gejala=${e.id}`)
+                            .then((r) => {
+                                r.json()
+                                    .then((res) => {
+                                        window.location.href = `/diagnosa/view-hasil-analisa?gejala=${res.id}`;
+                                    })
+                                    .catch((err) => console.log(err));
+                            })
+                            .catch((err) => console.log(err));
+                    })
+                    .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(err));
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 function sendChat(user) {
