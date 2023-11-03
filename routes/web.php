@@ -5,6 +5,7 @@ use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\HasilAnalisaController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\PenyakitSolusiAdminController;
 use App\Http\Controllers\PenyakitSolusiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::resource('admin', AdminController::class, [
         // etc...
     ]
 ]);
+Route::resource('penyakit_solusi_admin', PenyakitSolusiAdminController::class);
 
 Route::get('/test', [HasilAnalisaController::class, 'test']);
 

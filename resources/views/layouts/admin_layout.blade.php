@@ -46,13 +46,18 @@
 
                         <div class="ps-3 mt-2">
                             <li class="nav-heading text-dark">Pages</li>
-
                             <li class="nav-item mt-2 ps-3">
                                 <a class="nav-link collapsed" href="{{ route('admin') }}">
                                     <i class="bi bi-person"></i>
                                     <span>Users</span>
                                 </a>
-                            </li><!-- End F.A.Q Page Nav -->
+                            </li>
+                            <li class="nav-item mt-2 ps-3">
+                                <a class="nav-link collapsed" href="{{ route('penyakit_solusi_admin.index') }}">
+                                    <i class="bi bi-person"></i>
+                                    <span>Penyakit</span>
+                                </a>
+                            </li>
                         </div>
                     </ul>
                     <div class="bg-sidebar-foot mt-5 d-flex justify-content-center p-5"

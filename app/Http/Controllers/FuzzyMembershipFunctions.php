@@ -35,7 +35,7 @@ class FuzzyMembershipFunctions
         $batasAtasLama = 96;
         $batasBawahSangatLama = 88;
 
-        $date_now = Carbon::now()->format('H');
+        $date_now = Carbon::now()->format("H");
 
         $a = array();
         for ($i = 0; $i < count($value); $i++) {
